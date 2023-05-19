@@ -89,24 +89,22 @@ console.log(mylet);
 // sortNums(nums,'descending') // [21,11,3]
 
 let nums = [11,21,3];
- nums.sort(function (a, b){
- return a-b;});
-console.log(nums);
+ const sortNums = (nums,direction) =>{
+     switch (direction){
+         case 'ascending':
+         return nums.sort((b1, b2) => b1-b2);
+         case 'descending':
+         return nums.sort((b1, b2) => b2-b1);
+     }
+ };
+console.log(sortNums(nums,'ascending'));// [3,11,21])
+console.log(sortNums(nums,'descending'));// [3,11,21])
 
 
-let nums1 = [3,11,21];
-nums1.sort(function (b, a){
-    return a-b;});
-console.log(nums1);
 
 
 
-let nums2 = [21,11,3];
-nums1.sort(function (a, b){
-    return b-a;});
-console.log(nums2);
-
-- є масив
+//є масив
 //let coursesAndDurationArray = [
    // {title: 'JavaScript Complex', monthDuration: 5},
    // {title: 'Java Complex', monthDuration: 6},
@@ -119,4 +117,26 @@ console.log(nums2);
  //за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
 
 
-    let
+let coursesAndDurationArray = [
+{title: 'JavaScript Complex', monthDuration: 5},
+ {title: 'Java Complex', monthDuration: 6},
+{title: 'Python Complex', monthDuration: 6},
+{title: 'QA Complex', monthDuration: 4},
+ {title: 'FullStack', monthDuration: 7},
+ {title: 'Frontend', monthDuration: 4}];
+
+let sort = coursesAndDurationArray.sort((a,b)=> {
+    return a.monthDuration - b.monthDuration;
+});
+console.log(sort);
+
+
+let sort2 = coursesAndDurationArray.filter((vin)=>
+    vin.monthDuration > 5);
+
+console.log(sort2);
+
+let sort3 = coursesAndDurationArray.map((item, index)=>
+
+    ({...item, id:index +10}));
+console.log(sort3);
